@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+            
+            <!-- Material Design for Bootstrap CSS -->
+            <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+                
+                <style>
+                    ul {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                        background-color: #333;
+                    }
+                
+                li {
+                    float: left;
+                }
+                
+                li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+                
+                li a:hover:not(.active) {
+                    background-color: #111;
+                }
+                
+                .active {
+                    background-color: #4CAF50;
+                }
+<!--                body {-->
+<!--                    background-image: url("static/SF.png");-->
+<!--                }-->
+                </style>
+                </head>
+    <body>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a class="active" href="">DataExploration</a></li>
+            <li><a href="#contact">PredictiveModel</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+            <legend>Graph Settings</legend>
+       <form method="post" action="/DataExploration">
+           
+            <label for="year">Year</label>
+            <input type="range" id="yearinid" name="year"
+            min="2012" max="2016" value="2014" step="1" oninput="yearoutid.value = yearinid.value"/>
+            <output name="year" id="yearoutid">2014</output>
+            
+            <label for="graph">Graph Type</label>
+            <select id="GraphType" name="graph">
+                <option value="Region">Region</option>
+                <option value="Buildings">Buildings</option>
+            </select>
+            <input type="submit">
+                
+            
+        </form>
+       
+       <iframe src="{{ url_for('show_map',year=year,graph=graph) }} " height="800" width="1600"></iframe>
+       
+    </body>
+</html>
